@@ -8,7 +8,7 @@ class Productos extends HTMLElement {
     static get observedAttributes() {
         return ['productos'];
     }
-    attributesChangedCallback(propName, oldValue, newValue) {
+    attributeChangedCallback(propName, oldValue, newValue) {
         this.productos = JSON.parse(newValue);
     }
     connectedCallback() {

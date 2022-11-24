@@ -7,7 +7,7 @@ class Producto extends HTMLElement {
 
     }
 
-    attributesChangedCallback(propName, oldValue, newValue: string) {
+    attributeChangedCallback(propName, oldValue, newValue: string) {
 
         this.producto = JSON.parse(newValue)
 
@@ -30,11 +30,16 @@ class Producto extends HTMLElement {
 
 
             this.shadowRoot.innerHTML = `
-    <section>
-   hola desde producto
-    
-    </section>
-    
+            <link rel="stylesheet" href="./app/componentes/styles.css">
+            
+    <div class="card">
+    <img class="imagen" src="${this.producto.imagen}" alt="${this.producto.titulo}">  
+    <div class="card-info">
+    <p class="text-title">${this.producto.titulo}</p>
+    <p class="text-body">${this.producto.desc}</p>
+    <p class="price">${this.producto.precio}</p>    
+    </div>   
+    </div>   
     `
 
         }

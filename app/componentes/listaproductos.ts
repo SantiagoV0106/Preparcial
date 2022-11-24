@@ -9,7 +9,7 @@ class Productos extends HTMLElement {
 
     }
 
-    attributesChangedCallback(propName, oldValue, newValue: string) {
+    attributeChangedCallback(propName, oldValue, newValue: string) {
 
         this.productos = JSON.parse(newValue)
         
