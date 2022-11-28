@@ -10,6 +10,14 @@ class Appcontainer extends HTMLElement{
 
    connectedCallback(){
         DB.leerProductos((prodts)=> this.render(prodts));
+
+        const prod = this.shadowRoot.querySelectorAll('my-productos')
+        prod.forEach((e) =>{
+            e.addEventListener('delete-product', async(evt:CustomEvent)=>{
+                console.log('guat is goin on');                
+                DB.deleteProd(evt.detail.producto)
+            })
+        })
        
     }
 

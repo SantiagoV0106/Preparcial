@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
-import { getFirestore, collection, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, onSnapshot, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
 const firebaseConfig = {
     apiKey: "AIzaSyDXQG-NSLJy3UFoKxHetevH9PHrQ85JlxI",
     authDomain: "preparcial-5118a.firebaseapp.com",
@@ -35,4 +35,11 @@ const leerProductos = (cb) => {
         console.log(prodts);
     });
 };
-export default { addProducto, leerProductos };
+const deleteProd = (producto) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        yield deleteDoc(doc(db, "Productos", producto));
+    }
+    catch (error) {
+    }
+});
+export default { addProducto, leerProductos, deleteProd };

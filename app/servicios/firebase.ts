@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
-import { getFirestore, collection, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, onSnapshot,deleteDoc,doc } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
+import Productos from "../componentes/listaproductos";
 
 const firebaseConfig = {
    
@@ -38,10 +39,21 @@ const leerProductos = (cb: (productos)=> void) => {
 
     };
 
+const deleteProd = async (producto) =>{
+
+try{
+  await deleteDoc(doc(db,"Productos",producto))
+} catch(error){
+
+
+}
+
+}
 
 
 
-export default {addProducto, leerProductos}
+
+export default {addProducto, leerProductos, deleteProd}
 
 
 

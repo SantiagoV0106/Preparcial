@@ -22,6 +22,15 @@ class Producto extends HTMLElement {
 
     connectedCallback() {
         this.render();
+        const bt = this.shadowRoot.querySelector('button');
+        bt.addEventListener('click', ()=>{
+            const event =  new CustomEvent('delete-product',{                
+                detail: {producto:this.producto},
+                composed: true
+
+            });
+            this.dispatchEvent(event)
+        })
     }
 
     render() {
@@ -37,7 +46,8 @@ class Producto extends HTMLElement {
     <div class="card-info">
     <p class="text-title">${this.producto.titulo}</p>
     <p class="text-body">${this.producto.desc}</p>
-    <p class="price">${this.producto.precio}</p>    
+    <p class="price">${this.producto.precio}</p>
+    <button>Eliminar Producto</button>
     </div>   
     </div>   
     `
